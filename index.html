@@ -1,30 +1,24 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mesto</title>
   <script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
-        <img
-          src="fc3e6875d825f899a98d.svg"
-          alt="Логотип проекта место"
-          class="logo header__logo"
-        />
+        <img src="fc3e6875d825f899a98d.svg" alt="Логотип проекта место" class="logo header__logo">
       </header>
       <main class="content">
         <section class="profile page__section">
           <div class="profile__image"></div>
           <div class="profile__info">
-            <h1 class="profile__title"></h1>
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button"></button>
-            <p class="profile__description"></p>
+            <p class="profile__description">Исследователь океана</p>
           </div>
           <button class="profile__add-button" type="button"></button>
         </section>
@@ -33,7 +27,9 @@
         </section>
       </main>
       <footer class="footer page__section">
-        <p class="footer__copyright">© 2024 Mesto Russia</p>
+        <p class="footer__copyright">
+          © 2024 Mesto Russia
+        </p>
       </footer>
       <div class="popup popup_type_edit popup_is-animated">
         <div class="popup__content">
@@ -50,8 +46,7 @@
               placeholder="Имя"
               minlength="2"
               maxlength="40"
-              required
-            />
+              required>
             <span class="name-input-error popup__input_type_error"></span>
             <input
               id="description-input"
@@ -61,8 +56,7 @@
               placeholder="Занятие"
               minlength="2"
               maxlength="200"
-              required
-            />
+              required>
             <span
               class="description-input-error popup__input_type_error"
             ></span>
@@ -87,8 +81,7 @@
               placeholder="Название"
               minlength="2"
               maxlength="30"
-              required
-            />
+              required>
             <span class="place-input-error popup__input_type_error"></span>
             <input
               id="place-url-input"
@@ -96,8 +89,7 @@
               name="link"
               class="popup__input popup__input_type_url"
               placeholder="Ссылка на картинку"
-              required
-            />
+              required>
             <span class="place-url-input-error popup__input_type_error"></span>
             <button type="submit" class="button popup__button">
               Сохранить
@@ -124,8 +116,7 @@
             id="place-url-input"
             class="popup__input popup__input_type_url"
             placeholder="Ссылка на картинку"
-            required
-          />
+            required>
           <span class="place-url-input-error popup__input_type_error"></span>
           <button type="submit" class="button popup__button">Сохранить</button>
         </form>
