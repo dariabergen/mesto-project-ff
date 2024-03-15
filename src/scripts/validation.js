@@ -1,12 +1,3 @@
-export const validationSettings = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
-};
-
 const showInputError = (formElement, inputElement, errorMessage, validationSettings ) => 
 {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -71,15 +62,15 @@ const setEventListeners = (formElement, validationSettings) => {
   });
 };
 
-export const enableValidation = (validationSettings) => {
+export const enableValidation = (validationConfig) => {
   const formList = Array.from(
-    document.querySelectorAll(validationSettings.formSelector)
+    document.querySelectorAll(validationConfig.formSelector)
   );
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
-    setEventListeners(formElement, validationSettings);
+    setEventListeners(formElement, validationConfig);
   });
 };
 

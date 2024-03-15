@@ -1,5 +1,4 @@
-import { modalOpenImage } from "./index.js";
-import { setPopupOpenEventListener } from "./modal.js";
+import { modalOpenImage, setPopupOpenEventListener } from "./index.js";
 import { removeCard, addLikeCard } from "./api.js";
 
 const cardTemplate = document.querySelector("#card-template").content;
@@ -12,13 +11,14 @@ export function createCard(item, { deleteCard, likeCard, openImageCard, userId }
   cardImage.alt = item.name;
   cardTitle.textContent = item.name;
   cardImage.src = item.link;
-  cardDeleteButton.addEventListener("click", deleteCard);
   cardElement.id = item._id;
-  
+
   if (item.owner._id !== userId) {
     cardDeleteButton.classList.add("card__delete-button-hidden");
+  } else {
+    cardDeleteButton.addEventListener("click", deleteCard);
   }
-
+  
   const openModal = () => openImageCard(item);
   setPopupOpenEventListener(cardImage, modalOpenImage, openModal);
   const likeCount = item.likes.length || 0;
@@ -48,17 +48,10 @@ export async function handleLikeButton(likeButton, cardNode) {
   const likeCountNode = cardNode.querySelector(".like-button__count");
 
   try {
-    if (!isMyLikeOnCard) {
-      const result = await addLikeCard(cardId, false);
-      likeButton.classList.add("card__like-button_is-active");
-      const likeCount = result.likes.length || 0;
-      likeCountNode.textContent = likeCount;
-    } else {
-      const result = await addLikeCard(cardId, true);
-      likeButton.classList.remove("card__like-button_is-active");
-      const likeCount = result.likes.length || 0;
-      likeCountNode.textContent = likeCount;
-    }
+    const result = await addLikeCard(cardId, isMyLikeOnCard); 
+    const likeCount = result.likes.length || 0; 
+    likeCountNode.textContent = likeCount;
+    likeButton.classList.toggle("card__like-button_is-active")
   } catch (err) {
     console.error(`Ошибка: ${err}`);
   }
